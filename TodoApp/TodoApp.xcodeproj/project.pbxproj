@@ -23,8 +23,13 @@
 		5677874E2A7A6EE70078B5C1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677874D2A7A6EE70078B5C1 /* DetailViewController.swift */; };
 		567787502A7A7CC70078B5C1 /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677874F2A7A7CC70078B5C1 /* CustomSideMenuNavigation.swift */; };
 		567787522A7A7E680078B5C1 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567787512A7A7E680078B5C1 /* SideMenuViewController.swift */; };
-		568272782A7B334F0060BF53 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 568272772A7B334F0060BF53 /* DetailViewController.storyboard */; };
+		568272782A7B334F0060BF53 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 568272772A7B334F0060BF53 /* Detail.storyboard */; };
 		5682727A2A7B335B0060BF53 /* TodoComplete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 568272792A7B335B0060BF53 /* TodoComplete.storyboard */; };
+		5682727C2A7B85F50060BF53 /* AddTodo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5682727B2A7B85F50060BF53 /* AddTodo.storyboard */; };
+		5682727E2A7B86050060BF53 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682727D2A7B86050060BF53 /* AddTodoViewController.swift */; };
+		568272802A7B91870060BF53 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682727F2A7B91870060BF53 /* UIViewController+Extension.swift */; };
+		568272832A7BA9330060BF53 /* MemoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568272822A7BA9330060BF53 /* MemoListModel.swift */; };
+		568272852A7BA9790060BF53 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568272842A7BA9790060BF53 /* UserDefaultsManager.swift */; };
 		5B63A759544812917130F52B /* Pods_TodoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1778131E247732EA54FAA64A /* Pods_TodoApp.framework */; };
 		7C47EDCD8E3B3B509C0C45B9 /* Pods_TodoAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A283D72EDC361F55BCFF6B9 /* Pods_TodoAppTests.framework */; };
 		AD06423708186AA5366AE186 /* Pods_TodoApp_TodoAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B69340FB686831AA877D4E /* Pods_TodoApp_TodoAppUITests.framework */; };
@@ -70,8 +75,13 @@
 		5677874D2A7A6EE70078B5C1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5677874F2A7A7CC70078B5C1 /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
 		567787512A7A7E680078B5C1 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
-		568272772A7B334F0060BF53 /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
+		568272772A7B334F0060BF53 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		568272792A7B335B0060BF53 /* TodoComplete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodoComplete.storyboard; sourceTree = "<group>"; };
+		5682727B2A7B85F50060BF53 /* AddTodo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTodo.storyboard; sourceTree = "<group>"; };
+		5682727D2A7B86050060BF53 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
+		5682727F2A7B91870060BF53 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		568272822A7BA9330060BF53 /* MemoListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListModel.swift; sourceTree = "<group>"; };
+		568272842A7BA9790060BF53 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		713DBDF83FF2558298DACE2A /* Pods-TodoApp-TodoAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoApp-TodoAppUITests.release.xcconfig"; path = "Target Support Files/Pods-TodoApp-TodoAppUITests/Pods-TodoApp-TodoAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8A283D72EDC361F55BCFF6B9 /* Pods_TodoAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB08010B1D5048BCAFAC09C /* Pods-TodoAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoAppTests.release.xcconfig"; path = "Target Support Files/Pods-TodoAppTests/Pods-TodoAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,8 +146,10 @@
 			children = (
 				56083F182A7A38DF00904A19 /* AppDelegate.swift */,
 				56083F1A2A7A38DF00904A19 /* SceneDelegate.swift */,
+				568272822A7BA9330060BF53 /* MemoListModel.swift */,
+				568272842A7BA9790060BF53 /* UserDefaultsManager.swift */,
+				568272812A7B92FB0060BF53 /* Extension */,
 				568272742A7B33120060BF53 /* ViewControllers */,
-				567787492A7A67E20078B5C1 /* String+Extension.swift */,
 				56083F212A7A38E100904A19 /* Assets.xcassets */,
 				56083F232A7A38E100904A19 /* LaunchScreen.storyboard */,
 				56083F262A7A38E100904A19 /* Info.plist */,
@@ -169,8 +181,10 @@
 				56083F1E2A7A38DF00904A19 /* Main.storyboard */,
 				568272752A7B33280060BF53 /* SideMenu */,
 				568272762A7B33390060BF53 /* TodoListTableViewCell */,
+				5682727D2A7B86050060BF53 /* AddTodoViewController.swift */,
+				5682727B2A7B85F50060BF53 /* AddTodo.storyboard */,
 				5677874D2A7A6EE70078B5C1 /* DetailViewController.swift */,
-				568272772A7B334F0060BF53 /* DetailViewController.storyboard */,
+				568272772A7B334F0060BF53 /* Detail.storyboard */,
 				5677874B2A7A6A360078B5C1 /* TodoCompleteViewController.swift */,
 				568272792A7B335B0060BF53 /* TodoComplete.storyboard */,
 			);
@@ -193,6 +207,15 @@
 				567787462A7A544E0078B5C1 /* TodoListTableViewCell.xib */,
 			);
 			path = TodoListTableViewCell;
+			sourceTree = "<group>";
+		};
+		568272812A7B92FB0060BF53 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				567787492A7A67E20078B5C1 /* String+Extension.swift */,
+				5682727F2A7B91870060BF53 /* UIViewController+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		8967477F1E085CC2A942793E /* Pods */ = {
@@ -327,11 +350,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5682727C2A7B85F50060BF53 /* AddTodo.storyboard in Resources */,
 				56083F252A7A38E100904A19 /* LaunchScreen.storyboard in Resources */,
 				56083F222A7A38E100904A19 /* Assets.xcassets in Resources */,
 				56083F202A7A38DF00904A19 /* Main.storyboard in Resources */,
 				5682727A2A7B335B0060BF53 /* TodoComplete.storyboard in Resources */,
-				568272782A7B334F0060BF53 /* DetailViewController.storyboard in Resources */,
+				568272782A7B334F0060BF53 /* Detail.storyboard in Resources */,
 				567787482A7A544E0078B5C1 /* TodoListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,11 +485,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5677874C2A7A6A360078B5C1 /* TodoCompleteViewController.swift in Sources */,
+				568272802A7B91870060BF53 /* UIViewController+Extension.swift in Sources */,
 				56083F1D2A7A38DF00904A19 /* ViewController.swift in Sources */,
+				568272852A7BA9790060BF53 /* UserDefaultsManager.swift in Sources */,
 				56083F192A7A38DF00904A19 /* AppDelegate.swift in Sources */,
 				567787472A7A544E0078B5C1 /* TodoListTableViewCell.swift in Sources */,
+				568272832A7BA9330060BF53 /* MemoListModel.swift in Sources */,
 				5677874A2A7A67E20078B5C1 /* String+Extension.swift in Sources */,
 				56083F1B2A7A38DF00904A19 /* SceneDelegate.swift in Sources */,
+				5682727E2A7B86050060BF53 /* AddTodoViewController.swift in Sources */,
 				567787502A7A7CC70078B5C1 /* CustomSideMenuNavigation.swift in Sources */,
 				567787522A7A7E680078B5C1 /* SideMenuViewController.swift in Sources */,
 				5677874E2A7A6EE70078B5C1 /* DetailViewController.swift in Sources */,
@@ -654,6 +682,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -683,6 +712,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
