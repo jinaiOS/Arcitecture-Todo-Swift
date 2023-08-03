@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KCe-wx-VGt">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -74,11 +75,18 @@
                                 <segue destination="wKt-l7-wiO" kind="show" id="Pys-s5-TEZ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="AeA-NR-huD">
-                            <connections>
-                                <action selector="addListButtonTouched:" destination="BYZ-38-t0r" id="57Z-wR-rDe"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Add" image="plus" catalog="system" id="AeA-NR-huD">
+                                <connections>
+                                    <action selector="addListButtonTouched:" destination="BYZ-38-t0r" id="57Z-wR-rDe"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Edit" id="VPK-hK-C4m">
+                                <connections>
+                                    <action selector="editButtonTouched:" destination="BYZ-38-t0r" id="HTY-a3-SPM"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tvMain" destination="Fks-qs-vI8" id="hBq-Uw-dcC"/>

@@ -17,7 +17,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerXib()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         UserDefaultsManager.sharedInstance.loadTasks()
+        tvMain.reloadData()
     }
     
     private func registerXib() {
@@ -33,26 +38,35 @@ class ViewController: UIViewController {
             // 뷰 컨트롤러를 나타냅니다.
             self.navigationController?.pushViewController(vc, animated: true)
         }
-//        // 메시지창 컨트롤러 인스턴스 생성
-//        let alert = UIAlertController(title: "할 일 추가", message: "", preferredStyle: UIAlertController.Style.alert)
-//        alert.addTextField() { (textField) in
-//            textField.placeholder = "할 일을 입력하세요"
-//        }
-//
-//        // 메시지 창 컨트롤러에 들어갈 버튼 액션 객체 생성
-//        let cancelAction =  UIAlertAction(title: "취소", style: UIAlertAction.Style.default)
-//        let defaultAction = UIAlertAction(title: "추가", style: UIAlertAction.Style.cancel) {_ in
-//            self.todoList.append(["title": alert.textFields?[0].text ?? "", "isSelcted": "0"])
-//            print(self.todoList)
-//            self.tvMain.reloadData()
-//        }
-//
-//        //메시지 창 컨트롤러에 버튼 액션을 추가
-//        alert.addAction(cancelAction)
-//        alert.addAction(defaultAction)
-//
-//        //메시지 창 컨트롤러를 표시
-//        self.present(alert, animated: false)
+        //        // 메시지창 컨트롤러 인스턴스 생성
+        //        let alert = UIAlertController(title: "할 일 추가", message: "", preferredStyle: UIAlertController.Style.alert)
+        //        alert.addTextField() { (textField) in
+        //            textField.placeholder = "할 일을 입력하세요"
+        //        }
+        //
+        //        // 메시지 창 컨트롤러에 들어갈 버튼 액션 객체 생성
+        //        let cancelAction =  UIAlertAction(title: "취소", style: UIAlertAction.Style.default)
+        //        let defaultAction = UIAlertAction(title: "추가", style: UIAlertAction.Style.cancel) {_ in
+        //            self.todoList.append(["title": alert.textFields?[0].text ?? "", "isSelcted": "0"])
+        //            print(self.todoList)
+        //            self.tvMain.reloadData()
+        //        }
+        //
+        //        //메시지 창 컨트롤러에 버튼 액션을 추가
+        //        alert.addAction(cancelAction)
+        //        alert.addAction(defaultAction)
+        //
+        //        //메시지 창 컨트롤러를 표시
+        //        self.present(alert, animated: false)
+    }
+    @IBAction func editButtonTouched(_ sender: UIBarItem) {
+        if self.tvMain.isEditing {
+            sender.title = "Edit"
+            tvMain.setEditing(false, animated: true)
+        } else {
+            sender.title = "Done"
+            tvMain.setEditing(true, animated: true)
+        }
     }
 }
 
@@ -90,13 +104,25 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
         if let firstVC: DetailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
             // 뷰 컨트롤러를 구성 합니다.
-//            firstVC.dataList.removeAll()
-//            firstVC.dataList.append(UserDefaultsManager().memoList[indexPath.row].title)
-//            firstVC.dataList.append(UserDefaultsManager().memoList[indexPath.row].)
-//            firstVC.dataList.append(UserDefaultsManager().memoList[indexPath.row]["title"])
+            firstVC.dataList.removeAll()
+            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList[indexPath.row].title)
+            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList[indexPath.row].date)
+            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList[indexPath.row].content)
             // 뷰 컨트롤러를 나타냅니다.
             self.navigationController?.pushViewController(firstVC, animated: true)
         }
+    }
+    
+    //Edit Mode에서 Row별 모드 지정
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    //Edit Mode의 +, - 버튼
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        print("delete")
+        UserDefaultsManager.sharedInstance.memoList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }
 
