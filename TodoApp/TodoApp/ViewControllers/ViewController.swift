@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var tvMain: UITableView!
+    @IBOutlet weak var vBlankList: UIView!
     
     var todoList: [[String:String]] = []
     
@@ -46,9 +47,7 @@ class ViewController: UIViewController {
         
         //메시지 창 컨트롤러를 표시
         self.present(alert, animated: false)
-        
     }
-    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -64,8 +63,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         if todoList.count == 0 {
             tvMain.isHidden = true
+            vBlankList.isHidden = false
         } else {
             tvMain.isHidden = false
+            vBlankList.isHidden = true
         }
         
         cell.lblTitle.text = todoList[indexPath.row]["title"]
@@ -80,7 +81,26 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 선언
+//        let firstVC: DetailViewController = DetailViewController.init(nibName: "DetailViewController", bundle: nil)
+////        guard let firstVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+////               self.navigationController?.pushViewController(firstVC, animated: true)
+////        let firstVC = DetailViewController()
+//
+//        // 화면 띄우기
+//        self.navigationController?.pushViewController(firstVC, animated: true)
+//        self.present(firstVC, animated: true)
         
+        let storyboard: UIStoryboard = UIStoryboard(name: "DetailViewController", bundle: nil)
+        if let firstVC: DetailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            // 뷰 컨트롤러를 구성 합니다.
+            firstVC.dataList.removeAll()
+            firstVC.dataList.append(todoList[indexPath.row]["title"])
+            firstVC.dataList.append(todoList[indexPath.row]["title"])
+            firstVC.dataList.append(todoList[indexPath.row]["title"])
+            // 뷰 컨트롤러를 나타냅니다.
+            self.navigationController?.pushViewController(firstVC, animated: true)
+        }
     }
 }
 

@@ -23,6 +23,8 @@
 		5677874E2A7A6EE70078B5C1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677874D2A7A6EE70078B5C1 /* DetailViewController.swift */; };
 		567787502A7A7CC70078B5C1 /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677874F2A7A7CC70078B5C1 /* CustomSideMenuNavigation.swift */; };
 		567787522A7A7E680078B5C1 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567787512A7A7E680078B5C1 /* SideMenuViewController.swift */; };
+		568272782A7B334F0060BF53 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 568272772A7B334F0060BF53 /* DetailViewController.storyboard */; };
+		5682727A2A7B335B0060BF53 /* TodoComplete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 568272792A7B335B0060BF53 /* TodoComplete.storyboard */; };
 		5B63A759544812917130F52B /* Pods_TodoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1778131E247732EA54FAA64A /* Pods_TodoApp.framework */; };
 		7C47EDCD8E3B3B509C0C45B9 /* Pods_TodoAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A283D72EDC361F55BCFF6B9 /* Pods_TodoAppTests.framework */; };
 		AD06423708186AA5366AE186 /* Pods_TodoApp_TodoAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B69340FB686831AA877D4E /* Pods_TodoApp_TodoAppUITests.framework */; };
@@ -68,6 +70,8 @@
 		5677874D2A7A6EE70078B5C1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5677874F2A7A7CC70078B5C1 /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
 		567787512A7A7E680078B5C1 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		568272772A7B334F0060BF53 /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
+		568272792A7B335B0060BF53 /* TodoComplete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodoComplete.storyboard; sourceTree = "<group>"; };
 		713DBDF83FF2558298DACE2A /* Pods-TodoApp-TodoAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoApp-TodoAppUITests.release.xcconfig"; path = "Target Support Files/Pods-TodoApp-TodoAppUITests/Pods-TodoApp-TodoAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8A283D72EDC361F55BCFF6B9 /* Pods_TodoAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FB08010B1D5048BCAFAC09C /* Pods-TodoAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoAppTests.release.xcconfig"; path = "Target Support Files/Pods-TodoAppTests/Pods-TodoAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,14 +136,7 @@
 			children = (
 				56083F182A7A38DF00904A19 /* AppDelegate.swift */,
 				56083F1A2A7A38DF00904A19 /* SceneDelegate.swift */,
-				56083F1C2A7A38DF00904A19 /* ViewController.swift */,
-				56083F1E2A7A38DF00904A19 /* Main.storyboard */,
-				5677874F2A7A7CC70078B5C1 /* CustomSideMenuNavigation.swift */,
-				567787512A7A7E680078B5C1 /* SideMenuViewController.swift */,
-				567787452A7A544E0078B5C1 /* TodoListTableViewCell.swift */,
-				567787462A7A544E0078B5C1 /* TodoListTableViewCell.xib */,
-				5677874D2A7A6EE70078B5C1 /* DetailViewController.swift */,
-				5677874B2A7A6A360078B5C1 /* TodoCompleteViewController.swift */,
+				568272742A7B33120060BF53 /* ViewControllers */,
 				567787492A7A67E20078B5C1 /* String+Extension.swift */,
 				56083F212A7A38E100904A19 /* Assets.xcassets */,
 				56083F232A7A38E100904A19 /* LaunchScreen.storyboard */,
@@ -163,6 +160,39 @@
 				56083F3B2A7A38E100904A19 /* TodoAppUITestsLaunchTests.swift */,
 			);
 			path = TodoAppUITests;
+			sourceTree = "<group>";
+		};
+		568272742A7B33120060BF53 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				56083F1C2A7A38DF00904A19 /* ViewController.swift */,
+				56083F1E2A7A38DF00904A19 /* Main.storyboard */,
+				568272752A7B33280060BF53 /* SideMenu */,
+				568272762A7B33390060BF53 /* TodoListTableViewCell */,
+				5677874D2A7A6EE70078B5C1 /* DetailViewController.swift */,
+				568272772A7B334F0060BF53 /* DetailViewController.storyboard */,
+				5677874B2A7A6A360078B5C1 /* TodoCompleteViewController.swift */,
+				568272792A7B335B0060BF53 /* TodoComplete.storyboard */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		568272752A7B33280060BF53 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				5677874F2A7A7CC70078B5C1 /* CustomSideMenuNavigation.swift */,
+				567787512A7A7E680078B5C1 /* SideMenuViewController.swift */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		568272762A7B33390060BF53 /* TodoListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				567787452A7A544E0078B5C1 /* TodoListTableViewCell.swift */,
+				567787462A7A544E0078B5C1 /* TodoListTableViewCell.xib */,
+			);
+			path = TodoListTableViewCell;
 			sourceTree = "<group>";
 		};
 		8967477F1E085CC2A942793E /* Pods */ = {
@@ -300,6 +330,8 @@
 				56083F252A7A38E100904A19 /* LaunchScreen.storyboard in Resources */,
 				56083F222A7A38E100904A19 /* Assets.xcassets in Resources */,
 				56083F202A7A38DF00904A19 /* Main.storyboard in Resources */,
+				5682727A2A7B335B0060BF53 /* TodoComplete.storyboard in Resources */,
+				568272782A7B334F0060BF53 /* DetailViewController.storyboard in Resources */,
 				567787482A7A544E0078B5C1 /* TodoListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
