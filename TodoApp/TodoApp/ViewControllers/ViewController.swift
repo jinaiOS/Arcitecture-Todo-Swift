@@ -122,6 +122,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     //Edit Mode의 +, - 버튼
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         print("delete")
+        UserDefaultsManager.sharedInstance.trashList.append( UserDefaultsManager.sharedInstance.memoList[indexPath.row])
         UserDefaultsManager.sharedInstance.memoList.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }

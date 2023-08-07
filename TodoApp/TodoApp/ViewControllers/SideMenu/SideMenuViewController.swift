@@ -17,10 +17,13 @@ class SideMenuViewController: UIViewController {
     
     
     @IBAction func homeMenuTouched(_ sender: Any) {
-//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        if let vc: ViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as? ViewController {
-//            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootVC(vc, animated: false)
-//        }
+        guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? ViewController else {
+            return
+        }
+        let navigationController = UINavigationController(rootViewController: rootVC)
+        
+        UIApplication.shared.windows.first?.rootViewController = navigationController
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
     @IBAction func completeMenuTouched(_ sender: Any) {
@@ -34,6 +37,12 @@ class SideMenuViewController: UIViewController {
     }
     
     @IBAction func trashMenuTouched(_ sender: Any) {
+        guard let rootVC = UIStoryboard.init(name: "TrashList", bundle: nil).instantiateViewController(withIdentifier: "TrashListViewController") as? TrashListViewController else {
+            return
+        }
+        let navigationController = UINavigationController(rootViewController: rootVC)
         
+        UIApplication.shared.windows.first?.rootViewController = navigationController
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
 }
