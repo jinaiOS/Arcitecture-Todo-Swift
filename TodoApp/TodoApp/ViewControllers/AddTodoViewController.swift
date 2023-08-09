@@ -100,10 +100,10 @@ extension AddTodoViewController : UITextFieldDelegate {
         return newLength <= maxLength
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
-        // 키보드 내리면서 동작
-        textField.resignFirstResponder()
-        return true
-    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+//        // 키보드 내리면서 동작
+//        textField.resignFirstResponder()
+//        return true
+//    }
 }
 

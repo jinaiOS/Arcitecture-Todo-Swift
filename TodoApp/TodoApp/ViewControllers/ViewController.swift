@@ -7,7 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol ViewControllerDelegate {
+    func reloadData()
+}
+
+class ViewController: UIViewController, ViewControllerDelegate {
     
     @IBOutlet weak var tvMain: UITableView!
     @IBOutlet weak var vBlankList: UIView!
@@ -23,6 +27,10 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UserDefaultsManager.sharedInstance.loadTasks()
+        tvMain.reloadData()
+    }
+    
+    func reloadData() {
         tvMain.reloadData()
     }
     
@@ -73,7 +81,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserDefaultsManager.sharedInstance.memoList.count
+        return UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -89,14 +97,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             tvMain.isHidden = false
             vBlankList.isHidden = true
         }
+        cell.switchButton.isOn = false
         
-        cell.lblTitle.text = UserDefaultsManager.sharedInstance.memoList[indexPath.row].title
+        var mm = UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }
+        cell.lblTitle.text = mm[indexPath.row].title
+        cell.indexPath = indexPath.row
+        cell.delegate = self
         
-        if UserDefaultsManager.sharedInstance.memoList[indexPath.row].done == false {
-            cell.switchButton.isOn = false
-        } else {
-            cell.switchButton.isOn = true
-        }
+//        cell.completeButton(data: mm[indexPath.row], isOn: false)
         
         return cell
     }

@@ -9,17 +9,43 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var lblDate: UILabel!
-    @IBOutlet weak var lblContent: UILabel!
+    @IBOutlet weak var tfTitle: UITextField!
+    @IBOutlet weak var tfDate: UITextField!
+    @IBOutlet weak var tfContent: UITextView!
     
     var dataList: [String?] = []
+    var index: Int?
+    
+    // Create right UIBarButtonItem.
+    lazy var rightButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(buttonPressed(_:)))
+        
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblTitle.text = dataList[0]
-        lblDate.text = dataList[1]
-        lblContent.text = dataList[2]
+        self.navigationItem.rightBarButtonItem = self.rightButton
+        tfTitle.text = dataList[0]
+        tfDate.text = dataList[1]
+        tfContent.text = dataList[2]
+        
+        textFieldEnabled(isEnabled: false)
+    }
+    
+    func textFieldEnabled(isEnabled: Bool) {
+        tfTitle.isEnabled = isEnabled
+        tfDate.isEnabled = isEnabled
+        tfContent.isEditable = isEnabled
     }
 
+    @objc func buttonPressed(_ sender: UIBarButtonItem) {
+        if sender.title == "Edit" {
+            textFieldEnabled(isEnabled: true)
+            sender.title = "Done"
+        } else {
+            textFieldEnabled(isEnabled: false)
+            sender.title = "Edit"
+        }
+    }
 }
