@@ -9,6 +9,7 @@ import UIKit
 
 class TodoCompleteViewController: UIViewController {
 
+    /** @brief complete main tableview */
     @IBOutlet weak var tvMain: UITableView!
     
     let completeData = UserDefaultsManager.sharedInstance.memoList.filter { $0.done == true }
@@ -23,6 +24,7 @@ class TodoCompleteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = self.leftButton
+        self.navigationItem.title = "Complete"
         registerXib()
     }
     
@@ -59,13 +61,10 @@ extension TodoCompleteViewController: UITableViewDelegate, UITableViewDataSource
 //            tvMain.isHidden = false
 //            vBlankList.isHidden = true
 //        }
-        cell.switchButton.isOn = false
+        cell.switchButton.isOn = true
         
         cell.lblTitle.text = completeData[indexPath.row].title
 //        cell.delegate = self
-        
-//        cell.completeButton(data: mm[indexPath.row], isOn: false)
-        
         return cell
     }
     

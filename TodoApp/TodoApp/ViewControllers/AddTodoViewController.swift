@@ -10,9 +10,13 @@ import UIKit
 
 class AddTodoViewController: UIViewController {
     
+    /** @brief title text field */
     @IBOutlet weak var tfTitle: UITextField!
+    /** @brief date text field */
     @IBOutlet weak var tfDate: UITextField!
+    /** @brief main scrollview */
     @IBOutlet weak var svMain: UIScrollView!
+    /** @brief content text field */
     @IBOutlet weak var textVContent: UITextView!
     
     // UIDatePicker 객체 생성을 해줍니다.
@@ -21,15 +25,15 @@ class AddTodoViewController: UIViewController {
     // Create right UIBarButtonItem.
     lazy var rightButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(buttonPressed(_:)))
-        button.tag = 2
-        
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = self.rightButton
+        self.navigationItem.title = "Add"
         tfTitle.delegate = self
+        tfTitle.becomeFirstResponder()
         tfDate.delegate = self
         setupDatePicker()
         self.hideKeyBoardWhenTappedAround()
@@ -100,10 +104,10 @@ extension AddTodoViewController : UITextFieldDelegate {
         return newLength <= maxLength
     }
     
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
-//        // 키보드 내리면서 동작
-//        textField.resignFirstResponder()
-//        return true
-//    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        // 키보드 내리면서 동작
+        textField.resignFirstResponder()
+        return true
+    }
 }
 

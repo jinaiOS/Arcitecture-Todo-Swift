@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 protocol ViewControllerDelegate {
     func reloadData()
@@ -13,21 +14,66 @@ protocol ViewControllerDelegate {
 
 class ViewController: UIViewController, ViewControllerDelegate {
     
+    /** @brief tableview todo list */
     @IBOutlet weak var tvMain: UITableView!
+    /** @brief blank view */
     @IBOutlet weak var vBlankList: UIView!
     
-    var todoList: [[String:String]] = []
+    // 투두리스트 중 기간이 지나지 않은 리스트
+    var todoList = UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }
+    let userNotificationCenter = UNUserNotificationCenter.current()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerXib()
+        registerXib() // 테이블 뷰 쎌 등록
+        
+        userNotificationCenter.delegate = self
+        
+//        requestNotificationAuthorization()
+//        for i in todoList.filter { $0.done == false } {
+//            if i.done == false {
+//                
+//            }
+//        }
+//        sendNotification(year: <#T##Int#>, month: <#T##Int#>, day: <#T##Int#>, title: <#T##String?#>, body: <#T##String?#>)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UserDefaultsManager.sharedInstance.loadTasks()
         tvMain.reloadData()
+    }
+    
+    // 사용자에게 알림 권한 요청
+    func requestNotificationAuthorization() {
+        let authOptions = UNAuthorizationOptions(arrayLiteral: .alert, .badge, .sound)
+
+        userNotificationCenter.requestAuthorization(options: authOptions) { success, error in
+            if let error = error {
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    // 알림 전송
+    func sendNotification(year: Int, month: Int, day: Int, title: String?, body: String?) {
+        let notificationContent = UNMutableNotificationContent()
+        
+        notificationContent.title = title ?? ""
+        notificationContent.body = body ?? ""
+        
+        let dateComponents = DateComponents(year: year, month: month, day: day)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let request = UNNotificationRequest(identifier: "testNotification",
+                                            content: notificationContent,
+                                            trigger: trigger)
+        
+        userNotificationCenter.add(request) { error in
+            if let error = error {
+                print("Notification Error: ", error)
+            }
+        }
     }
     
     func reloadData() {
@@ -68,6 +114,8 @@ class ViewController: UIViewController, ViewControllerDelegate {
         //        //메시지 창 컨트롤러를 표시
         //        self.present(alert, animated: false)
     }
+    
+    // 수정 버튼 클릭 시
     @IBAction func editButtonTouched(_ sender: UIBarItem) {
         if self.tvMain.isEditing {
             sender.title = "Edit"
@@ -81,7 +129,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }.count
+        return todoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,21 +138,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        if UserDefaultsManager.sharedInstance.memoList.count == 0 {
+        if todoList.count == 0 {
+            // 투두리스트 개수가 0개일 때
             tvMain.isHidden = true
             vBlankList.isHidden = false
         } else {
             tvMain.isHidden = false
             vBlankList.isHidden = true
         }
+        
         cell.switchButton.isOn = false
         
-        var mm = UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }
-        cell.lblTitle.text = mm[indexPath.row].title
-        cell.indexPath = indexPath.row
+        cell.lblTitle.text = todoList[indexPath.row].title // 제목 설정
+        cell.index = indexPath.row
         cell.delegate = self
-        
-//        cell.completeButton(data: mm[indexPath.row], isOn: false)
         
         return cell
     }
@@ -136,3 +183,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension ViewController: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
+}

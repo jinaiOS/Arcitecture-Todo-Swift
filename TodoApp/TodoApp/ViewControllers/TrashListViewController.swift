@@ -9,6 +9,7 @@ import UIKit
 
 class TrashListViewController: UIViewController {
     
+    /** @brief trash main table view */
     @IBOutlet weak var tvMain: UITableView!
     
     // Create left UIBarButtonItem.
@@ -19,18 +20,10 @@ class TrashListViewController: UIViewController {
         return button
     }()
     
-    // Create right UIBarButtonItem.
-    lazy var rightButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(rightButtonPressed(_:)))
-        button.tag = 2
-        
-        return button
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = self.leftButton
-        self.navigationItem.rightBarButtonItem = self.rightButton
+        self.navigationItem.title = "Trash"
         registerXib()
     }
     
@@ -52,11 +45,6 @@ class TrashListViewController: UIViewController {
         if let vc = storyboard.instantiateViewController(identifier: "CustomSideMenuNavigation") as? CustomSideMenuNavigation {
             present(vc, animated: true, completion: nil)
         }
-    }
-    
-    @objc func rightButtonPressed(_ sender: Any) {
-        //        UserDefaultsManager.sharedInstance.memoList.append(MemoListModel(title: tfTitle.text ?? "", date: tfDate.text ?? "", content: textVContent.text ?? ""))
-        //        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -81,11 +69,7 @@ extension TrashListViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.lblTitle.text = UserDefaultsManager.sharedInstance.trashList[indexPath.row].title
         
-        if UserDefaultsManager.sharedInstance.trashList[indexPath.row].done == false {
-            cell.switchButton.isOn = false
-        } else {
-            cell.switchButton.isOn = true
-        }
+        cell.switchButton.isHidden = true
         
         return cell
     }

@@ -9,12 +9,15 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    /** @brief title text field */
     @IBOutlet weak var tfTitle: UITextField!
+    /** @brief date text field */
     @IBOutlet weak var tfDate: UITextField!
+    /** @brief content text field */
     @IBOutlet weak var tfContent: UITextView!
     
+    // 넘겨받는 투두 데이터 리스트
     var dataList: [String?] = []
-    var index: Int?
     
     // Create right UIBarButtonItem.
     lazy var rightButton: UIBarButtonItem = {

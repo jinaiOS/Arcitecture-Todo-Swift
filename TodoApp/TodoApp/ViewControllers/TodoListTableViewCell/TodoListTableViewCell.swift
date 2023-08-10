@@ -9,11 +9,13 @@ import UIKit
 
 class TodoListTableViewCell: UITableViewCell {
 
+    /** @brief title label */
     @IBOutlet weak var lblTitle: UILabel!
+    /** @brief switch button */
     @IBOutlet weak var switchButton: UISwitch!
     
-    var indexPath: Int = 0
     var delegate: ViewControllerDelegate!
+    var index: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,13 +28,9 @@ class TodoListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-//    func completeButton(data: MemoListModel, isOn: Bool) {
-//        UserDefaultsManager.sharedInstance.memoList[indexPath].done = switchButton.isOn
-//    }
-    
     
     @IBAction func completeButtonTouched(_ sender: UISwitch) {
-        UserDefaultsManager.sharedInstance.memoList[indexPath].done = sender.isOn
+        UserDefaultsManager.sharedInstance.memoList[index].done = sender.isOn
         delegate?.reloadData()
     }
 }
