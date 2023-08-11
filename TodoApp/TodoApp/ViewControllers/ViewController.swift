@@ -163,9 +163,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if let firstVC: DetailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
             // 뷰 컨트롤러를 구성 합니다.
             firstVC.dataList.removeAll()
-            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList[indexPath.row].title)
-            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList[indexPath.row].date)
-            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList[indexPath.row].content)
+            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row].title)
+            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row].date)
+            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row].content)
             // 뷰 컨트롤러를 나타냅니다.
             self.navigationController?.pushViewController(firstVC, animated: true)
         }

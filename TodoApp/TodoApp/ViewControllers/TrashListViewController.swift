@@ -15,7 +15,6 @@ class TrashListViewController: UIViewController {
     // Create left UIBarButtonItem.
     lazy var leftButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(leftButtonPressed(_:)))
-        button.tag = 1
         
         return button
     }()
