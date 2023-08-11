@@ -20,7 +20,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
     @IBOutlet weak var vBlankList: UIView!
     
     // 투두리스트 중 기간이 지나지 않은 리스트
-    var todoList = UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }
+    
     let userNotificationCenter = UNUserNotificationCenter.current()
     
     override func viewDidLoad() {
@@ -129,7 +129,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoList.count
+        return UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -137,6 +137,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 TodoListTableViewCell else {
             return UITableViewCell()
         }
+        
+        var todoList = UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }
         
         if todoList.count == 0 {
             // 투두리스트 개수가 0개일 때

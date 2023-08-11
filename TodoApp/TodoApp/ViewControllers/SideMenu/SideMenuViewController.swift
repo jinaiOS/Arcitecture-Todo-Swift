@@ -17,7 +17,7 @@ class SideMenuViewController: UIViewController {
     
     
     @IBAction func homeMenuTouched(_ sender: Any) {
-        guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewCovntroller") as? ViewController else {
+        guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? ViewController else {
             return
         }
         let navigationController = UINavigationController(rootViewController: rootVC)
