@@ -11,5 +11,6 @@ struct MemoListModel {
     var title: String
     var date: String
     var content: String
+    var category: String
     var done: Bool = false
 }

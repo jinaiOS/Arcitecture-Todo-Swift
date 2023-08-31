@@ -20,11 +20,25 @@ class ViewController: UIViewController, ViewControllerDelegate {
     @IBOutlet weak var vBlankList: UIView!
     
     // 투두리스트 중 기간이 지나지 않은 리스트
+    var memoList = UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }
+    var memoListData : Array<[MemoListModel]> = [[]]
+    let sectionHeader = ["사과", "배", "포도", "망고", "딸기", "바나나", "파인애플"]
     
     let userNotificationCenter = UNUserNotificationCenter.current()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        memoList = memoList.filter({ $0.category != "" })
+
+        memoListData.remove(at: 0)
+        memoListData.append(memoList.filter({ i in i.category == "사과" }))
+        memoListData.append(memoList.filter({ i in i.category == "배" }))
+        memoListData.append(memoList.filter({ i in i.category == "포도" }))
+        memoListData.append(memoList.filter({ i in i.category == "망고" }))
+        memoListData.append(memoList.filter({ i in i.category == "딸기" }))
+        memoListData.append(memoList.filter({ i in i.category == "바나나" }))
+        memoListData.append(memoList.filter({ i in i.category == "파인애플" }))
+        memoListData = memoListData.filter({ !$0.isEmpty })
         
         registerXib() // 테이블 뷰 쎌 등록
         
@@ -129,7 +143,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }.count
+        return memoListData[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -138,7 +152,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        var todoList = UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }
+        let todoList = memoListData[indexPath.section]
         
         if todoList.count == 0 {
             // 투두리스트 개수가 0개일 때
@@ -179,9 +193,29 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     //Edit Mode의 +, - 버튼
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         print("delete")
-        UserDefaultsManager.sharedInstance.trashList.append( UserDefaultsManager.sharedInstance.memoList[indexPath.row])
-        UserDefaultsManager.sharedInstance.memoList.remove(at: indexPath.row)
+        UserDefaultsManager.sharedInstance.trashList.append( UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row])
+//        UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return memoListData.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionHeader[section]
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "end"
     }
 }
 

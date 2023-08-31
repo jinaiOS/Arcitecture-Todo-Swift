@@ -20,11 +20,11 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dl-Fe-Wyx">
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Don-F4-m8L">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="esG-hD-IkO">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qlu-PU-KXu">
-                                                <rect key="frame" x="20" y="20" width="353" height="45"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="IKk-6g-21a"/>
                                                 </constraints>
@@ -32,45 +32,41 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="목표 날짜를 선택해 주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0fa-WE-bns">
-                                                <rect key="frame" x="20" y="85" width="353" height="45"/>
+                                                <rect key="frame" x="0.0" y="45" width="393" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="J7U-o7-Jsq"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dVN-qh-L83">
+                                                <rect key="frame" x="0.0" y="90" width="393" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DhK-ri-MNf">
-                                                <rect key="frame" x="20" y="150" width="353" height="30"/>
+                                                <rect key="frame" x="0.0" y="124" width="393" height="200"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" priority="700" constant="30" id="9LT-p0-5ya"/>
+                                                    <constraint firstAttribute="height" constant="200" id="9LT-p0-5ya"/>
                                                 </constraints>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eQm-1z-sfm">
+                                                <rect key="frame" x="0.0" y="324" width="393" height="435"/>
+                                            </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="qlu-PU-KXu" firstAttribute="leading" secondItem="Don-F4-m8L" secondAttribute="leading" constant="20" id="FjK-j3-dFI"/>
-                                            <constraint firstAttribute="trailing" secondItem="DhK-ri-MNf" secondAttribute="trailing" constant="20" id="Iwb-2I-AX5"/>
-                                            <constraint firstAttribute="trailing" secondItem="qlu-PU-KXu" secondAttribute="trailing" constant="20" id="Px4-H3-YqC"/>
-                                            <constraint firstItem="DhK-ri-MNf" firstAttribute="leading" secondItem="Don-F4-m8L" secondAttribute="leading" constant="20" id="Ymc-7y-L3o"/>
-                                            <constraint firstItem="0fa-WE-bns" firstAttribute="leading" secondItem="Don-F4-m8L" secondAttribute="leading" constant="20" id="ZXi-TM-nA0"/>
-                                            <constraint firstAttribute="bottom" secondItem="DhK-ri-MNf" secondAttribute="bottom" constant="20" id="cVl-5b-mDb"/>
-                                            <constraint firstItem="0fa-WE-bns" firstAttribute="top" secondItem="qlu-PU-KXu" secondAttribute="bottom" constant="20" id="hKq-du-IfT"/>
-                                            <constraint firstItem="DhK-ri-MNf" firstAttribute="top" secondItem="0fa-WE-bns" secondAttribute="bottom" constant="20" id="jzz-q1-1U6"/>
-                                            <constraint firstItem="qlu-PU-KXu" firstAttribute="top" secondItem="Don-F4-m8L" secondAttribute="top" constant="20" id="rTG-Lf-8kC"/>
-                                            <constraint firstAttribute="trailing" secondItem="0fa-WE-bns" secondAttribute="trailing" constant="20" id="sxe-O8-GUi"/>
-                                        </constraints>
-                                    </view>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Don-F4-m8L" secondAttribute="bottom" id="9TI-3v-69Y"/>
-                                    <constraint firstItem="Don-F4-m8L" firstAttribute="leading" secondItem="8dl-Fe-Wyx" secondAttribute="leading" id="OJD-l7-xs9"/>
-                                    <constraint firstItem="Don-F4-m8L" firstAttribute="top" secondItem="8dl-Fe-Wyx" secondAttribute="top" id="dpZ-9T-XCr"/>
-                                    <constraint firstItem="Don-F4-m8L" firstAttribute="centerX" secondItem="8dl-Fe-Wyx" secondAttribute="centerX" id="rBI-PI-ENp"/>
-                                    <constraint firstAttribute="trailing" secondItem="Don-F4-m8L" secondAttribute="trailing" id="udF-bD-2Qe"/>
+                                    <constraint firstAttribute="trailing" secondItem="esG-hD-IkO" secondAttribute="trailing" id="CqZ-vc-pOn"/>
+                                    <constraint firstItem="esG-hD-IkO" firstAttribute="centerY" secondItem="8dl-Fe-Wyx" secondAttribute="centerY" id="H9a-oj-pmV"/>
+                                    <constraint firstItem="esG-hD-IkO" firstAttribute="leading" secondItem="8dl-Fe-Wyx" secondAttribute="leading" id="Qb3-MT-Nvr"/>
+                                    <constraint firstItem="esG-hD-IkO" firstAttribute="centerX" secondItem="8dl-Fe-Wyx" secondAttribute="centerX" id="dpl-fe-BNq"/>
+                                    <constraint firstItem="esG-hD-IkO" firstAttribute="top" secondItem="8dl-Fe-Wyx" secondAttribute="top" id="fqX-9w-amO"/>
+                                    <constraint firstAttribute="bottom" secondItem="esG-hD-IkO" secondAttribute="bottom" id="ycQ-yB-uMm"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -84,8 +80,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imgAdd" destination="eQm-1z-sfm" id="xfi-nR-smG"/>
                         <outlet property="svMain" destination="8dl-Fe-Wyx" id="ozL-jV-ehe"/>
                         <outlet property="textVContent" destination="DhK-ri-MNf" id="8zg-Z5-4Dw"/>
+                        <outlet property="tfCategory" destination="dVN-qh-L83" id="Wxn-wO-YSq"/>
                         <outlet property="tfDate" destination="0fa-WE-bns" id="5XE-cl-Id1"/>
                         <outlet property="tfTitle" destination="qlu-PU-KXu" id="T2R-tJ-X4i"/>
                     </connections>

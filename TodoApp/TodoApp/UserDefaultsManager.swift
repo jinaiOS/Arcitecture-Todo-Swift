@@ -29,11 +29,14 @@ class UserDefaultsManager {
                 "title": $0.title,
                 "date": $0.date,
                 "content": $0.content,
+                "category": $0.category,
                 "done": $0.done
             ]
         }
         let userDefaults = UserDefaults.standard
-        userDefaults.set(data, forKey: "memoList")    }
+        userDefaults.set(data, forKey: "memoList")
+        
+    }
     
     func loadTasks() {
         let userDefaults = UserDefaults.standard
@@ -43,8 +46,9 @@ class UserDefaultsManager {
             guard let title = $0["title"] as? String else { return nil }
             guard let date = $0["date"] as? String else { return nil }
             guard let content = $0["content"] as? String else { return nil }
+            guard let category = $0["category"] as? String else { return nil }
             guard let done = $0["done"] as? Bool else { return nil }
-            return MemoListModel(title: title, date: date, content: content, done: done)
+            return MemoListModel(title: title, date: date, content: content, category: category, done: done)
         }
     }
     
@@ -54,6 +58,7 @@ class UserDefaultsManager {
                 "title": $0.title,
                 "date": $0.date,
                 "content": $0.content,
+                "category": $0.category,
                 "done": $0.done
             ]
         }
@@ -69,8 +74,9 @@ class UserDefaultsManager {
             guard let title = $0["title"] as? String else { return nil }
             guard let date = $0["date"] as? String else { return nil }
             guard let content = $0["content"] as? String else { return nil }
+            guard let category = $0["category"] as? String else { return nil }
             guard let done = $0["done"] as? Bool else { return nil }
-            return MemoListModel(title: title, date: date, content: content, done: done)
+            return MemoListModel(title: title, date: date, content: content, category: category, done: done)
         }
     }
 }

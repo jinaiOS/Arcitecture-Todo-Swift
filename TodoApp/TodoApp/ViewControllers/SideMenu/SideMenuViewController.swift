@@ -9,12 +9,27 @@ import UIKit
 
 class SideMenuViewController: UIViewController {
     
+    /** @breif 스파르타 이미지 */
+    @IBOutlet weak var imgSparta: UIImageView!
+    
+    let imgURL = "https://spartacodingclub.kr/css/images/scc-og.jpg"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        if let url = URL(string: imgURL) {
+            imgSparta.load(url: url)
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imgToLink(_:)))
+            imgSparta.addGestureRecognizer(tapGesture)
+            imgSparta.isUserInteractionEnabled = true
+        }
     }
     
+    @objc func imgToLink(_ gesture: UITapGestureRecognizer) {
+        if let url = URL(string: imgURL) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
     
     @IBAction func homeMenuTouched(_ sender: Any) {
         guard let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as? ViewController else {
