@@ -1,4 +1,4 @@
-# Todo
+# iOS Arcitecture TODO App
 Todo App with Swift
 
 ```mermaid
