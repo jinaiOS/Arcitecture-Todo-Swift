@@ -20,7 +20,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
     @IBOutlet weak var vBlankList: UIView!
     
     // 투두리스트 중 기간이 지나지 않은 리스트
-    var memoList = UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }
+    var memoList = CoreDataManager.sharedInstance.readCoreData()
     var memoListData : Array<[MemoListModel]> = [[]]
     let sectionHeader = ["사과", "배", "포도", "망고", "딸기", "바나나", "파인애플"]
     

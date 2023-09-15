@@ -30,7 +30,7 @@ class TodoListTableViewCell: UITableViewCell {
     
     
     @IBAction func completeButtonTouched(_ sender: UISwitch) {
-        UserDefaultsManager.sharedInstance.memoList[index].done = sender.isOn
+//        UserDefaultsManager.sharedInstance.memoList[index].done = sender.isOn
         delegate?.reloadData()
     }
 }

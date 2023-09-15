@@ -28,7 +28,7 @@ class TrashListViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UserDefaultsManager.sharedInstance.loadTrashTasks()
+//        UserDefaultsManager.sharedInstance.loadTrashTasks()
         tvMain.reloadData()
     }
     
@@ -48,10 +48,10 @@ class TrashListViewController: UIViewController {
 }
 
 extension TrashListViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserDefaultsManager.sharedInstance.trashList.count
-    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListTableViewCell", for: indexPath) as?
                 TodoListTableViewCell else {
@@ -66,7 +66,7 @@ extension TrashListViewController: UITableViewDelegate, UITableViewDataSource {
         //            vBlankList.isHidden = true
         //        }
         
-        cell.lblTitle.text = UserDefaultsManager.sharedInstance.trashList[indexPath.row].title
+//        cell.lblTitle.text = UserDefaultsManager.sharedInstance.trashList[indexPath.row].title
         
         cell.switchButton.isHidden = true
         
