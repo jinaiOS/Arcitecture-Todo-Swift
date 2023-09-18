@@ -20,24 +20,24 @@ class ViewController: UIViewController, ViewControllerDelegate {
     @IBOutlet weak var vBlankList: UIView!
     
     // 투두리스트 중 기간이 지나지 않은 리스트
-    var memoList = CoreDataManager.sharedInstance.readCoreData()
-    var memoListData : Array<[MemoListModel]> = [[]]
+    var memoList = CoreDataManager.sharedInstance.fetchTodos()
+    var memoListData : Array<[Todo]> = [[]]
     let sectionHeader = ["사과", "배", "포도", "망고", "딸기", "바나나", "파인애플"]
     
     let userNotificationCenter = UNUserNotificationCenter.current()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        memoList = memoList.filter({ $0.category != "" })
+//        memoList = memoList.filter({ $0.category != "" })
 
         memoListData.remove(at: 0)
-        memoListData.append(memoList.filter({ i in i.category == "사과" }))
-        memoListData.append(memoList.filter({ i in i.category == "배" }))
-        memoListData.append(memoList.filter({ i in i.category == "포도" }))
-        memoListData.append(memoList.filter({ i in i.category == "망고" }))
-        memoListData.append(memoList.filter({ i in i.category == "딸기" }))
-        memoListData.append(memoList.filter({ i in i.category == "바나나" }))
-        memoListData.append(memoList.filter({ i in i.category == "파인애플" }))
+//        memoListData.append(memoList.filter({ i in i.category == "사과" }))
+//        memoListData.append(memoList.filter({ i in i.category == "배" }))
+//        memoListData.append(memoList.filter({ i in i.category == "포도" }))
+//        memoListData.append(memoList.filter({ i in i.category == "망고" }))
+//        memoListData.append(memoList.filter({ i in i.category == "딸기" }))
+//        memoListData.append(memoList.filter({ i in i.category == "바나나" }))
+//        memoListData.append(memoList.filter({ i in i.category == "파인애플" }))
         memoListData = memoListData.filter({ !$0.isEmpty })
         
         registerXib() // 테이블 뷰 쎌 등록
@@ -55,7 +55,8 @@ class ViewController: UIViewController, ViewControllerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UserDefaultsManager.sharedInstance.loadTasks()
+        CoreDataManager.sharedInstance.getTodos()
+//        UserDefaultsManager.sharedInstance.loadTasks()
         tvMain.reloadData()
     }
     
@@ -177,9 +178,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         if let firstVC: DetailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
             // 뷰 컨트롤러를 구성 합니다.
             firstVC.dataList.removeAll()
-            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row].title)
-            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row].date)
-            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row].content)
+//            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row].title)
+//            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row].date)
+//            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row].content)
             // 뷰 컨트롤러를 나타냅니다.
             self.navigationController?.pushViewController(firstVC, animated: true)
         }
@@ -193,7 +194,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     //Edit Mode의 +, - 버튼
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         print("delete")
-        UserDefaultsManager.sharedInstance.trashList.append( UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row])
+//        UserDefaultsManager.sharedInstance.trashList.append( UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row])
 //        UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }

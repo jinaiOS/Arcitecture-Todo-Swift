@@ -52,6 +52,7 @@ class AddTodoViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @objc func buttonPressed(_ sender: Any) {
+        CoreDataManager.sharedInstance.insertTodo(Todo(id: UUID.init(), title: tfTitle.text ?? "", createDate: (tfDate.text?.toDate())!, modifyDate: (tfDate.text?.toDate())!))
 //        UserDefaultsManager.sharedInstance.memoList.append(MemoListModel(title: tfTitle.text ?? "", date: tfDate.text ?? "", content: textVContent.text ?? "", category: tfCategory.text ?? ""))
         self.navigationController?.popViewController(animated: true)
     }
