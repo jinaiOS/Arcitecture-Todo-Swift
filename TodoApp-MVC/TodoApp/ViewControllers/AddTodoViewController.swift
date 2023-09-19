@@ -20,13 +20,9 @@ class AddTodoViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var textVContent: UITextView!
     /** @brief image */
     @IBOutlet weak var imgAdd: UIImageView!
-    /** @brief category textfield */
-    @IBOutlet weak var tfCategory: UITextField!
     
     // UIDatePicker 객체 생성을 해줍니다.
     let datePicker = UIDatePicker()
-    
-    let fruits = ["사과", "배", "포도", "망고", "딸기", "바나나", "파인애플"]
     
     // Create right UIBarButtonItem.
     lazy var rightButton: UIBarButtonItem = {
@@ -41,11 +37,8 @@ class AddTodoViewController: UIViewController, UINavigationControllerDelegate {
         tfTitle.delegate = self
         tfTitle.becomeFirstResponder()
         tfDate.delegate = self
-        tfCategory.delegate = self
         setupDatePicker()
         self.hideKeyBoardWhenTappedAround()
-        createPickerView()
-        dismissPickerView()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imgPicker(_:)))
         imgAdd.addGestureRecognizer(tapGesture)
         imgAdd.isUserInteractionEnabled = true
@@ -53,7 +46,6 @@ class AddTodoViewController: UIViewController, UINavigationControllerDelegate {
     
     @objc func buttonPressed(_ sender: Any) {
         CoreDataManager.sharedInstance.insertTodo(Todo(id: UUID.init(), title: tfTitle.text ?? "", createDate: (tfDate.text?.toDate())!, modifyDate: (tfDate.text?.toDate())!))
-//        UserDefaultsManager.sharedInstance.memoList.append(MemoListModel(title: tfTitle.text ?? "", date: tfDate.text ?? "", content: textVContent.text ?? "", category: tfCategory.text ?? ""))
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -156,45 +148,5 @@ extension AddTodoViewController : UIImagePickerControllerDelegate {
             let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
             self.imgAdd.image = img
         }
-    }
-}
-extension AddTodoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return fruits.count
-    }
-    
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return fruits[row]
-    }
-    
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        tfCategory.text = fruits[row]
-    }
-    
-    
-    func createPickerView() {
-        let pickerView = UIPickerView()
-        pickerView.delegate = self
-        tfCategory.inputView = pickerView
-    }
-    
-    @objc func pickerAction(sender: UIDatePicker) {
-        dismissKeyboard()
-    }
-    
-    func dismissPickerView() {
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        let button = UIBarButtonItem(title: "선택", style: .plain, target: self, action: #selector(pickerAction))
-        toolBar.setItems([button], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        tfCategory.inputAccessoryView = toolBar
     }
 }

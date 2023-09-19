@@ -12,6 +12,8 @@ class TrashListViewController: UIViewController {
     /** @brief trash main table view */
     @IBOutlet weak var tvMain: UITableView!
     
+    let trashList = CoreDataManager.sharedInstance.getTodos().filter { $0.isDelete == true }
+    
     // Create left UIBarButtonItem.
     lazy var leftButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(leftButtonPressed(_:)))
@@ -50,8 +52,9 @@ class TrashListViewController: UIViewController {
 extension TrashListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return trashList.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TodoListTableViewCell", for: indexPath) as?
                 TodoListTableViewCell else {
@@ -66,8 +69,7 @@ extension TrashListViewController: UITableViewDelegate, UITableViewDataSource {
         //            vBlankList.isHidden = true
         //        }
         
-//        cell.lblTitle.text = UserDefaultsManager.sharedInstance.trashList[indexPath.row].title
-        
+        cell.lblTitle.text = trashList[indexPath.row].title
         cell.switchButton.isHidden = true
         
         return cell

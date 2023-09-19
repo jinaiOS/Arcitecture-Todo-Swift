@@ -20,43 +20,21 @@ class ViewController: UIViewController, ViewControllerDelegate {
     @IBOutlet weak var vBlankList: UIView!
     
     // 투두리스트 중 기간이 지나지 않은 리스트
-    var memoList = CoreDataManager.sharedInstance.fetchTodos()
-    var memoListData : Array<[Todo]> = [[]]
-    let sectionHeader = ["사과", "배", "포도", "망고", "딸기", "바나나", "파인애플"]
+    var memoList = CoreDataManager.sharedInstance.getTodos().filter { $0.isCompleted == false && $0.isDelete == false }
     
     let userNotificationCenter = UNUserNotificationCenter.current()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        memoList = memoList.filter({ $0.category != "" })
-
-        memoListData.remove(at: 0)
-//        memoListData.append(memoList.filter({ i in i.category == "사과" }))
-//        memoListData.append(memoList.filter({ i in i.category == "배" }))
-//        memoListData.append(memoList.filter({ i in i.category == "포도" }))
-//        memoListData.append(memoList.filter({ i in i.category == "망고" }))
-//        memoListData.append(memoList.filter({ i in i.category == "딸기" }))
-//        memoListData.append(memoList.filter({ i in i.category == "바나나" }))
-//        memoListData.append(memoList.filter({ i in i.category == "파인애플" }))
-        memoListData = memoListData.filter({ !$0.isEmpty })
         
         registerXib() // 테이블 뷰 쎌 등록
         
         userNotificationCenter.delegate = self
-        
-//        requestNotificationAuthorization()
-//        for i in todoList.filter { $0.done == false } {
-//            if i.done == false {
-//                
-//            }
-//        }
-//        sendNotification(year: <#T##Int#>, month: <#T##Int#>, day: <#T##Int#>, title: <#T##String?#>, body: <#T##String?#>)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        CoreDataManager.sharedInstance.getTodos()
-//        UserDefaultsManager.sharedInstance.loadTasks()
+        memoList = CoreDataManager.sharedInstance.getTodos().filter { $0.isCompleted == false && $0.isDelete == false }
         tvMain.reloadData()
     }
     
@@ -108,26 +86,6 @@ class ViewController: UIViewController, ViewControllerDelegate {
             // 뷰 컨트롤러를 나타냅니다.
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        //        // 메시지창 컨트롤러 인스턴스 생성
-        //        let alert = UIAlertController(title: "할 일 추가", message: "", preferredStyle: UIAlertController.Style.alert)
-        //        alert.addTextField() { (textField) in
-        //            textField.placeholder = "할 일을 입력하세요"
-        //        }
-        //
-        //        // 메시지 창 컨트롤러에 들어갈 버튼 액션 객체 생성
-        //        let cancelAction =  UIAlertAction(title: "취소", style: UIAlertAction.Style.default)
-        //        let defaultAction = UIAlertAction(title: "추가", style: UIAlertAction.Style.cancel) {_ in
-        //            self.todoList.append(["title": alert.textFields?[0].text ?? "", "isSelcted": "0"])
-        //            print(self.todoList)
-        //            self.tvMain.reloadData()
-        //        }
-        //
-        //        //메시지 창 컨트롤러에 버튼 액션을 추가
-        //        alert.addAction(cancelAction)
-        //        alert.addAction(defaultAction)
-        //
-        //        //메시지 창 컨트롤러를 표시
-        //        self.present(alert, animated: false)
     }
     
     // 수정 버튼 클릭 시
@@ -144,7 +102,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memoListData[section].count
+        return memoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -152,10 +110,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 TodoListTableViewCell else {
             return UITableViewCell()
         }
-        
-        let todoList = memoListData[indexPath.section]
-        
-        if todoList.count == 0 {
+                
+        if memoList.count == 0 {
             // 투두리스트 개수가 0개일 때
             tvMain.isHidden = true
             vBlankList.isHidden = false
@@ -164,9 +120,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             vBlankList.isHidden = true
         }
         
-        cell.switchButton.isOn = false
+        cell.switchButton.isOn = memoList[indexPath.row].isCompleted
         
-        cell.lblTitle.text = todoList[indexPath.row].title // 제목 설정
+        cell.lblTitle.text = memoList[indexPath.row].title // 제목 설정
         cell.index = indexPath.row
         cell.delegate = self
         
@@ -177,10 +133,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
         if let firstVC: DetailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
             // 뷰 컨트롤러를 구성 합니다.
-            firstVC.dataList.removeAll()
-//            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row].title)
-//            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row].date)
-//            firstVC.dataList.append(UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row].content)
+            firstVC.dataList = memoList[indexPath.row]
             // 뷰 컨트롤러를 나타냅니다.
             self.navigationController?.pushViewController(firstVC, animated: true)
         }
@@ -194,29 +147,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     //Edit Mode의 +, - 버튼
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         print("delete")
-//        UserDefaultsManager.sharedInstance.trashList.append( UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }[indexPath.row])
-//        UserDefaultsManager.sharedInstance.memoList.filter { $0.done == false }.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return memoListData.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionHeader[section]
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 40
-    }
-    
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "end"
+        CoreDataManager.sharedInstance.deleteTodo(memoList[indexPath.row])
+        memoList = CoreDataManager.sharedInstance.getTodos().filter { $0.isCompleted == false && $0.isDelete == false }
+        tableView.deleteRows(at: [indexPath], with: .none)
+        tableView.reloadData()
     }
 }
 

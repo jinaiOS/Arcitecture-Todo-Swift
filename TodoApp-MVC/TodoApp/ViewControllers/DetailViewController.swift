@@ -17,7 +17,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var tfContent: UITextView!
     
     // 넘겨받는 투두 데이터 리스트
-    var dataList: [String?] = []
+    var dataList: Todo?
     // UIDatePicker 객체 생성을 해줍니다.
     let datePicker = UIDatePicker()
     
@@ -31,10 +31,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = self.rightButton
-        tfTitle.text = dataList[0]
-        tfDate.text = dataList[1]
-        tfContent.text = dataList[2]
-        
+        tfTitle.text = dataList?.title
+        tfDate.text = dataList?.createDate.toString()        
         tfTitle.delegate = self
         tfDate.delegate = self
         setupDatePicker()

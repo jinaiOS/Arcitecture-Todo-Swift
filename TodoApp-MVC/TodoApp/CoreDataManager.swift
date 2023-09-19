@@ -12,8 +12,18 @@ class CoreDataManager {
     
     static let sharedInstance = CoreDataManager()
     
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "TodoModel")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
     var context: NSManagedObjectContext {
-        return AppDelegate().persistentContainer.viewContext
+        return persistentContainer.viewContext
     }
     
     var todoEntity: NSEntityDescription? {
@@ -43,7 +53,7 @@ class CoreDataManager {
         var todos: [Todo] = []
         let fetchResults = fetchTodos()
         for result in fetchResults {
-            let todo = Todo(id: UUID(), title: result.title, createDate: result.createDate, modifyDate: result.modifyDate)
+            let todo = Todo(id: result.id, title: result.title, createDate: result.createDate, modifyDate: result.modifyDate, isCompleted: result.isCompleted, isDelete: result.isDelete)
             todos.append(todo)
         }
         return todos
@@ -57,6 +67,7 @@ class CoreDataManager {
             managedObject.setValue(todo.createDate, forKey: "createDate")
             managedObject.setValue(todo.modifyDate, forKey: "modifyDate")
             managedObject.setValue(todo.isCompleted, forKey: "isCompleted")
+            managedObject.setValue(todo.isDelete, forKey: "isDelete")
             saveToContext()
         }
     }
@@ -71,14 +82,17 @@ class CoreDataManager {
         saveToContext()
     }
     
-    func deleteBookmark(_ todo: Todo) {
+    func deleteTodo(_ todo: Todo) {
         let fetchResults = fetchTodos()
-        let notice = fetchResults.filter({ $0.id == todo.id })[0]
-        context.delete(notice)
+        for result in fetchResults {
+            if result.id == todo.id {
+                result.isDelete = true
+            }
+        }
         saveToContext()
     }
     
-    func deleteAllBookmarks() {
+    func deleteAllTodos() {
         let fetchResults = fetchTodos()
         for result in fetchResults {
             context.delete(result)

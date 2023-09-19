@@ -21,5 +21,6 @@ extension TodoModel {
     @NSManaged public var createDate: Date
     @NSManaged public var modifyDate: Date
     @NSManaged public var isCompleted: Bool
+    @NSManaged public var isDelete: Bool
 
 }

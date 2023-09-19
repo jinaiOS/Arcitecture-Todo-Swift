@@ -7,12 +7,13 @@
 
 import Foundation
 
-struct Todo {
+struct Todo : Codable, Equatable {
     var id: UUID /// 각 Todo의 고유 ID
     var title: String /// 제목
     var createDate: Date /// 생성된 날짜
     var modifyDate: Date ///  생성된 날짜
     var isCompleted: Bool = false /// 완료여부
+    var isDelete: Bool = false /// 삭제여부
 }
 
 
