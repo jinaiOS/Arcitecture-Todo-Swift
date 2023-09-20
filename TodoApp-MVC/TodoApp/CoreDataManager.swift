@@ -76,7 +76,8 @@ class CoreDataManager {
         let fetchResults = fetchTodos()
         for result in fetchResults {
             if result.id == todo.id {
-                result.title = "업데이트한 제목"
+                result.title = todo.title
+                result.modifyDate = todo.modifyDate
             }
         }
         saveToContext()

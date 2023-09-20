@@ -52,6 +52,7 @@ class DetailViewController: UIViewController {
             textFieldEnabled(isEnabled: true)
             sender.title = "Done"
         } else {
+            CoreDataManager.sharedInstance.updateTodo(Todo(id: dataList?.id ?? UUID(), title: tfTitle.text ?? "", createDate: dataList?.createDate ?? Date(), modifyDate: Date()))
             textFieldEnabled(isEnabled: false)
             sender.title = "Edit"
         }
