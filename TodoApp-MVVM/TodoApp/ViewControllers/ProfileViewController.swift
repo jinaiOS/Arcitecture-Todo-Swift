@@ -31,7 +31,7 @@ class ProfileViewController: UIViewController {
     
     lazy var lbPostCnt: UILabel = {
         let label = UILabel()
-        label.text = String(dataList.count)
+        label.text = String(viewModel.todoList.count)
         label.textAlignment = .center
         return label
     }()
@@ -191,7 +191,7 @@ class ProfileViewController: UIViewController {
         return cv
     }()
     
-    let dataList = CoreDataManager.sharedInstance.getTodos().filter { $0.isDelete == false }
+    let viewModel = ProfileViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -281,14 +281,14 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataList.count
+        return viewModel.todoList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else {
             return UICollectionViewCell()
         }
-        let dataDecoded : Data = Data(base64Encoded: dataList[indexPath.row].image, options: .ignoreUnknownCharacters)!
+        let dataDecoded : Data = Data(base64Encoded: viewModel.todoList[indexPath.row].image, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         cell.imgMain.image = decodedimage
         return cell
