@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56062EC62ABC121500142FDE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56062EC52ABC121500142FDE /* ProfileViewController.swift */; };
+		56062EC92ABC123900142FDE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 56062EC82ABC123900142FDE /* SnapKit */; };
 		56083F192A7A38DF00904A19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56083F182A7A38DF00904A19 /* AppDelegate.swift */; };
 		56083F1B2A7A38DF00904A19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56083F1A2A7A38DF00904A19 /* SceneDelegate.swift */; };
 		56083F1D2A7A38DF00904A19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56083F1C2A7A38DF00904A19 /* ViewController.swift */; };
@@ -62,6 +64,7 @@
 /* Begin PBXFileReference section */
 		1778131E247732EA54FAA64A /* Pods_TodoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3805098DD52B1B8D008BA99D /* Pods-TodoApp-TodoAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoApp-TodoAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-TodoApp-TodoAppUITests/Pods-TodoApp-TodoAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		56062EC52ABC121500142FDE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		56083F152A7A38DF00904A19 /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56083F182A7A38DF00904A19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56083F1A2A7A38DF00904A19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +114,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B63A759544812917130F52B /* Pods_TodoApp.framework in Frameworks */,
+				56062EC92ABC123900142FDE /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +210,7 @@
 				569A34C12A80898400FE098E /* TrashList.storyboard */,
 				5677874B2A7A6A360078B5C1 /* TodoCompleteViewController.swift */,
 				568272792A7B335B0060BF53 /* TodoComplete.storyboard */,
+				56062EC52ABC121500142FDE /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -280,6 +285,9 @@
 			dependencies = (
 			);
 			name = TodoApp;
+			packageProductDependencies = (
+				56062EC82ABC123900142FDE /* SnapKit */,
+			);
 			productName = TodoApp;
 			productReference = 56083F152A7A38DF00904A19 /* TodoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -355,6 +363,9 @@
 				Base,
 			);
 			mainGroup = 56083F0C2A7A38DF00904A19;
+			packageReferences = (
+				56062EC72ABC123900142FDE /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 56083F162A7A38DF00904A19 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -508,6 +519,7 @@
 			files = (
 				5677874C2A7A6A360078B5C1 /* TodoCompleteViewController.swift in Sources */,
 				56BDBF4C2A97088700A9C10A /* UIImage+Extension.swift in Sources */,
+				56062EC62ABC121500142FDE /* ProfileViewController.swift in Sources */,
 				568272802A7B91870060BF53 /* UIViewController+Extension.swift in Sources */,
 				56083F1D2A7A38DF00904A19 /* ViewController.swift in Sources */,
 				568272852A7BA9790060BF53 /* CoreDataManager.swift in Sources */,
@@ -874,6 +886,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		56062EC72ABC123900142FDE /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		56062EC82ABC123900142FDE /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56062EC72ABC123900142FDE /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		569490832AB3027B0064024E /* TodoModel.xcdatamodeld */ = {
