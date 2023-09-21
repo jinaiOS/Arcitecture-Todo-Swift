@@ -71,18 +71,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="hXf-TL-scb">
-                        <barButtonItem key="leftBarButtonItem" image="line.3.horizontal" catalog="system" id="65g-Om-8Ue">
+                        <barButtonItem key="leftBarButtonItem" image="Menu" id="65g-Om-8Ue">
+                            <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <segue destination="wKt-l7-wiO" kind="show" id="Pys-s5-TEZ"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Add" image="plus" catalog="system" id="AeA-NR-huD">
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <connections>
                                     <action selector="addListButtonTouched:" destination="BYZ-38-t0r" id="57Z-wR-rDe"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Edit" id="VPK-hK-C4m">
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <connections>
                                     <action selector="editButtonTouched:" destination="BYZ-38-t0r" id="HTY-a3-SPM"/>
                                 </connections>
@@ -124,7 +127,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="FVX-tY-fhZ">
-                                <rect key="frame" x="0.0" y="153" width="393" height="458"/>
+                                <rect key="frame" x="0.0" y="153" width="393" height="568"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3V-kk-xtK">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
@@ -171,8 +174,23 @@
                                             <action selector="trashMenuTouched:" destination="i51-g6-FWk" eventType="touchUpInside" id="Mdb-rc-aUa"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aG3-0A-l6o">
+                                        <rect key="frame" x="0.0" y="330" width="393" height="60"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="LcU-ex-hvw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="MY">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="myMenuTouched:" destination="i51-g6-FWk" eventType="touchUpInside" id="XG7-AE-HTe"/>
+                                        </connections>
+                                    </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rUo-Z0-eUu">
-                                        <rect key="frame" x="0.0" y="330" width="393" height="128"/>
+                                        <rect key="frame" x="0.0" y="440" width="393" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="ogn-Ko-oYQ"/>
                                         </constraints>
@@ -201,8 +219,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <image name="Menu" width="21" height="17.666666030883789"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
