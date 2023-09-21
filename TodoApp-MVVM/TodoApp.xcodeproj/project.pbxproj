@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56062EC62ABC121500142FDE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56062EC52ABC121500142FDE /* ProfileViewController.swift */; };
+		56062EC92ABC123900142FDE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 56062EC82ABC123900142FDE /* SnapKit */; };
+		56062ECB2ABC90F900142FDE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56062ECA2ABC90F900142FDE /* ViewModel.swift */; };
 		56083F192A7A38DF00904A19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56083F182A7A38DF00904A19 /* AppDelegate.swift */; };
 		56083F1B2A7A38DF00904A19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56083F1A2A7A38DF00904A19 /* SceneDelegate.swift */; };
 		56083F1D2A7A38DF00904A19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56083F1C2A7A38DF00904A19 /* ViewController.swift */; };
@@ -27,8 +30,13 @@
 		5682727C2A7B85F50060BF53 /* AddTodo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5682727B2A7B85F50060BF53 /* AddTodo.storyboard */; };
 		5682727E2A7B86050060BF53 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682727D2A7B86050060BF53 /* AddTodoViewController.swift */; };
 		568272802A7B91870060BF53 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682727F2A7B91870060BF53 /* UIViewController+Extension.swift */; };
-		568272832A7BA9330060BF53 /* MemoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568272822A7BA9330060BF53 /* MemoListModel.swift */; };
-		568272852A7BA9790060BF53 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568272842A7BA9790060BF53 /* UserDefaultsManager.swift */; };
+		568272832A7BA9330060BF53 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568272822A7BA9330060BF53 /* Todo.swift */; };
+		568272852A7BA9790060BF53 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568272842A7BA9790060BF53 /* CoreDataManager.swift */; };
+		569490852AB3027B0064024E /* TodoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 569490832AB3027B0064024E /* TodoModel.xcdatamodeld */; };
+		5694908A2AB31E100064024E /* TodoModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569490882AB31E100064024E /* TodoModel+CoreDataProperties.swift */; };
+		5694908B2AB31E100064024E /* TodoModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569490892AB31E100064024E /* TodoModel+CoreDataClass.swift */; };
+		5694908D2AB862310064024E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694908C2AB862310064024E /* String+Extension.swift */; };
+		5694908F2AB8623D0064024E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5694908E2AB8623D0064024E /* Date+Extension.swift */; };
 		569A34C22A80898400FE098E /* TrashList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569A34C12A80898400FE098E /* TrashList.storyboard */; };
 		569A34C42A80899000FE098E /* TrashListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A34C32A80899000FE098E /* TrashListViewController.swift */; };
 		56BDBF4C2A97088700A9C10A /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDBF4B2A97088700A9C10A /* UIImage+Extension.swift */; };
@@ -57,6 +65,8 @@
 /* Begin PBXFileReference section */
 		1778131E247732EA54FAA64A /* Pods_TodoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3805098DD52B1B8D008BA99D /* Pods-TodoApp-TodoAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoApp-TodoAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-TodoApp-TodoAppUITests/Pods-TodoApp-TodoAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		56062EC52ABC121500142FDE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		56062ECA2ABC90F900142FDE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		56083F152A7A38DF00904A19 /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56083F182A7A38DF00904A19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56083F1A2A7A38DF00904A19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,8 +91,13 @@
 		5682727B2A7B85F50060BF53 /* AddTodo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTodo.storyboard; sourceTree = "<group>"; };
 		5682727D2A7B86050060BF53 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		5682727F2A7B91870060BF53 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		568272822A7BA9330060BF53 /* MemoListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListModel.swift; sourceTree = "<group>"; };
-		568272842A7BA9790060BF53 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		568272822A7BA9330060BF53 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		568272842A7BA9790060BF53 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		569490842AB3027B0064024E /* TodoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoModel.xcdatamodel; sourceTree = "<group>"; };
+		569490882AB31E100064024E /* TodoModel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TodoModel+CoreDataProperties.swift"; path = "TodoApp/TodoModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		569490892AB31E100064024E /* TodoModel+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TodoModel+CoreDataClass.swift"; path = "TodoApp/TodoModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5694908C2AB862310064024E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		5694908E2AB8623D0064024E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		569A34C12A80898400FE098E /* TrashList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrashList.storyboard; sourceTree = "<group>"; };
 		569A34C32A80899000FE098E /* TrashListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashListViewController.swift; sourceTree = "<group>"; };
 		56BDBF4B2A97088700A9C10A /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -101,6 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B63A759544812917130F52B /* Pods_TodoApp.framework in Frameworks */,
+				56062EC92ABC123900142FDE /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +142,8 @@
 		56083F0C2A7A38DF00904A19 = {
 			isa = PBXGroup;
 			children = (
+				569490892AB31E100064024E /* TodoModel+CoreDataClass.swift */,
+				569490882AB31E100064024E /* TodoModel+CoreDataProperties.swift */,
 				56083F172A7A38DF00904A19 /* TodoApp */,
 				56083F2E2A7A38E100904A19 /* TodoAppTests */,
 				56083F382A7A38E100904A19 /* TodoAppUITests */,
@@ -150,13 +168,14 @@
 			children = (
 				56083F182A7A38DF00904A19 /* AppDelegate.swift */,
 				56083F1A2A7A38DF00904A19 /* SceneDelegate.swift */,
-				568272822A7BA9330060BF53 /* MemoListModel.swift */,
-				568272842A7BA9790060BF53 /* UserDefaultsManager.swift */,
+				568272822A7BA9330060BF53 /* Todo.swift */,
+				568272842A7BA9790060BF53 /* CoreDataManager.swift */,
 				568272812A7B92FB0060BF53 /* Extension */,
 				568272742A7B33120060BF53 /* ViewControllers */,
 				56083F212A7A38E100904A19 /* Assets.xcassets */,
 				56083F232A7A38E100904A19 /* LaunchScreen.storyboard */,
 				56083F262A7A38E100904A19 /* Info.plist */,
+				569490832AB3027B0064024E /* TodoModel.xcdatamodeld */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -182,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				56083F1C2A7A38DF00904A19 /* ViewController.swift */,
+				56062ECA2ABC90F900142FDE /* ViewModel.swift */,
 				56083F1E2A7A38DF00904A19 /* Main.storyboard */,
 				568272752A7B33280060BF53 /* SideMenu */,
 				568272762A7B33390060BF53 /* TodoListTableViewCell */,
@@ -193,6 +213,7 @@
 				569A34C12A80898400FE098E /* TrashList.storyboard */,
 				5677874B2A7A6A360078B5C1 /* TodoCompleteViewController.swift */,
 				568272792A7B335B0060BF53 /* TodoComplete.storyboard */,
+				56062EC52ABC121500142FDE /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -220,6 +241,8 @@
 			children = (
 				5682727F2A7B91870060BF53 /* UIViewController+Extension.swift */,
 				56BDBF4B2A97088700A9C10A /* UIImage+Extension.swift */,
+				5694908C2AB862310064024E /* String+Extension.swift */,
+				5694908E2AB8623D0064024E /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -265,6 +288,9 @@
 			dependencies = (
 			);
 			name = TodoApp;
+			packageProductDependencies = (
+				56062EC82ABC123900142FDE /* SnapKit */,
+			);
 			productName = TodoApp;
 			productReference = 56083F152A7A38DF00904A19 /* TodoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -340,6 +366,9 @@
 				Base,
 			);
 			mainGroup = 56083F0C2A7A38DF00904A19;
+			packageReferences = (
+				56062EC72ABC123900142FDE /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 56083F162A7A38DF00904A19 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -493,18 +522,25 @@
 			files = (
 				5677874C2A7A6A360078B5C1 /* TodoCompleteViewController.swift in Sources */,
 				56BDBF4C2A97088700A9C10A /* UIImage+Extension.swift in Sources */,
+				56062EC62ABC121500142FDE /* ProfileViewController.swift in Sources */,
 				568272802A7B91870060BF53 /* UIViewController+Extension.swift in Sources */,
 				56083F1D2A7A38DF00904A19 /* ViewController.swift in Sources */,
-				568272852A7BA9790060BF53 /* UserDefaultsManager.swift in Sources */,
+				568272852A7BA9790060BF53 /* CoreDataManager.swift in Sources */,
 				56083F192A7A38DF00904A19 /* AppDelegate.swift in Sources */,
 				569A34C42A80899000FE098E /* TrashListViewController.swift in Sources */,
 				567787472A7A544E0078B5C1 /* TodoListTableViewCell.swift in Sources */,
-				568272832A7BA9330060BF53 /* MemoListModel.swift in Sources */,
+				568272832A7BA9330060BF53 /* Todo.swift in Sources */,
+				5694908A2AB31E100064024E /* TodoModel+CoreDataProperties.swift in Sources */,
+				5694908D2AB862310064024E /* String+Extension.swift in Sources */,
 				56083F1B2A7A38DF00904A19 /* SceneDelegate.swift in Sources */,
+				56062ECB2ABC90F900142FDE /* ViewModel.swift in Sources */,
+				569490852AB3027B0064024E /* TodoModel.xcdatamodeld in Sources */,
 				5682727E2A7B86050060BF53 /* AddTodoViewController.swift in Sources */,
 				567787502A7A7CC70078B5C1 /* CustomSideMenuNavigation.swift in Sources */,
 				567787522A7A7E680078B5C1 /* SideMenuViewController.swift in Sources */,
 				5677874E2A7A6EE70078B5C1 /* DetailViewController.swift in Sources */,
+				5694908F2AB8623D0064024E /* Date+Extension.swift in Sources */,
+				5694908B2AB31E100064024E /* TodoModel+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,6 +890,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		56062EC72ABC123900142FDE /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		56062EC82ABC123900142FDE /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56062EC72ABC123900142FDE /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		569490832AB3027B0064024E /* TodoModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				569490842AB3027B0064024E /* TodoModel.xcdatamodel */,
+			);
+			currentVersion = 569490842AB3027B0064024E /* TodoModel.xcdatamodel */;
+			path = TodoModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 56083F0D2A7A38DF00904A19 /* Project object */;
 }

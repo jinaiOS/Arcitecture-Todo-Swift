@@ -46,5 +46,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    
+    func changeRootViewController (_ vc: UIViewController, animated: Bool) {
+        //        let navigationController = UINavigationController(rootViewController: vc)
+        //        guard let windowScene = (scene as? UIWindowScene) else { return }
+        //        window = UIWindow(windowScene: windowScene)
+        //        window?.backgroundColor = .systemBackground
+        //        window?.rootViewController = navigationController
+        
+        let navigationController = UINavigationController(rootViewController: vc)
+        
+        guard let window = self.window else { return }
+        window.makeKeyAndVisible()
+        window.backgroundColor = .systemBackground
+        window.rootViewController = navigationController
+    }
 }
 

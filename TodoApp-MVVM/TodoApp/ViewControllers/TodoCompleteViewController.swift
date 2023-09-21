@@ -12,12 +12,12 @@ class TodoCompleteViewController: UIViewController {
     /** @brief complete main tableview */
     @IBOutlet weak var tvMain: UITableView!
     
-    let completeData = UserDefaultsManager.sharedInstance.memoList.filter { $0.done == true }
+    let completeData = CoreDataManager.sharedInstance.getTodos().filter { $0.isCompleted == true }
     
     // Create left UIBarButtonItem.
     lazy var leftButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(leftButtonPressed(_:)))
-        
+        let button = UIBarButtonItem(image: UIImage(named: "Menu"), style: .plain, target: self, action: #selector(leftButtonPressed(_:)))
+        button.tintColor = .black
         return button
     }()
     
@@ -54,7 +54,7 @@ extension TodoCompleteViewController: UITableViewDelegate, UITableViewDataSource
             return UITableViewCell()
         }
         
-//        if UserDefaultsManager.sharedInstance.memoList.count == 0 {
+//        if completeData.count == 0 {
 //            tvMain.isHidden = true
 //            vBlankList.isHidden = false
 //        } else {

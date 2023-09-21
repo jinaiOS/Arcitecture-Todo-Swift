@@ -60,4 +60,9 @@ class SideMenuViewController: UIViewController {
         UIApplication.shared.windows.first?.rootViewController = navigationController
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
+    
+    @IBAction func myMenuTouched(_ sender: Any) {
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(ProfileViewController(), animated: false)
+    }
+    
 }
