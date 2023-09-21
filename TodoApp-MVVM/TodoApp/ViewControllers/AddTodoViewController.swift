@@ -23,6 +23,7 @@ class AddTodoViewController: UIViewController, UINavigationControllerDelegate {
     
     // UIDatePicker 객체 생성을 해줍니다.
     let datePicker = UIDatePicker()
+    let viewModel = AddViewModel()
     
     // Create right UIBarButtonItem.
     lazy var rightButton: UIBarButtonItem = {
@@ -47,7 +48,7 @@ class AddTodoViewController: UIViewController, UINavigationControllerDelegate {
     @objc func buttonPressed(_ sender: Any) {
         if let data = imgAdd.image?.pngData() {
             let dataStr = data.base64EncodedString(options: .lineLength64Characters)
-            CoreDataManager.sharedInstance.insertTodo(Todo(id: UUID.init(), title: tfTitle.text ?? "", image: dataStr, createDate: (tfDate.text?.toDate())!, modifyDate: (tfDate.text?.toDate())!))
+            viewModel.addTodo(title: tfTitle.text ?? "", image: dataStr, createDate: Date(), modifyDate: Date())
         }
         self.navigationController?.popViewController(animated: true)
     }
