@@ -12,7 +12,7 @@ class TodoCompleteViewController: UIViewController {
     /** @brief complete main tableview */
     @IBOutlet weak var tvMain: UITableView!
     
-    let completeData = CoreDataManager.sharedInstance.getTodos().filter { $0.isCompleted == true }
+    let viewModel = TodoCompleteViewModel()
     
     // Create left UIBarButtonItem.
     lazy var leftButton: UIBarButtonItem = {
@@ -45,7 +45,7 @@ class TodoCompleteViewController: UIViewController {
 }
 extension TodoCompleteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return completeData.count
+        return viewModel.completeData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,7 +63,7 @@ extension TodoCompleteViewController: UITableViewDelegate, UITableViewDataSource
 //        }
         cell.switchButton.isOn = true
         
-        cell.lblTitle.text = completeData[indexPath.row].title
+        cell.lblTitle.text = viewModel.completeData[indexPath.row].title
 //        cell.delegate = self
         return cell
     }
