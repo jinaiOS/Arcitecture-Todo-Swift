@@ -53,7 +53,7 @@ class CoreDataManager {
         var todos: [Todo] = []
         let fetchResults = fetchTodos()
         for result in fetchResults {
-            let todo = Todo(id: result.id, title: result.title, createDate: result.createDate, modifyDate: result.modifyDate, isCompleted: result.isCompleted, isDelete: result.isDelete)
+            let todo = Todo(id: result.id, title: result.title, image: result.image, createDate: result.createDate, modifyDate: result.modifyDate, isCompleted: result.isCompleted, isDelete: result.isDelete)
             todos.append(todo)
         }
         return todos
@@ -64,6 +64,7 @@ class CoreDataManager {
             let managedObject = NSManagedObject(entity: entity, insertInto: context)
             managedObject.setValue(todo.id, forKey: "id")
             managedObject.setValue(todo.title, forKey: "title")
+            managedObject.setValue(todo.image, forKey: "image")
             managedObject.setValue(todo.createDate, forKey: "createDate")
             managedObject.setValue(todo.modifyDate, forKey: "modifyDate")
             managedObject.setValue(todo.isCompleted, forKey: "isCompleted")
@@ -77,6 +78,7 @@ class CoreDataManager {
         for result in fetchResults {
             if result.id == todo.id {
                 result.title = todo.title
+                result.image = todo.image
                 result.modifyDate = todo.modifyDate
             }
         }

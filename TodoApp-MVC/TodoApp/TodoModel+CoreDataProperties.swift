@@ -18,6 +18,7 @@ extension TodoModel {
 
     @NSManaged public var id: UUID
     @NSManaged public var title: String
+    @NSManaged public var image: String
     @NSManaged public var createDate: Date
     @NSManaged public var modifyDate: Date
     @NSManaged public var isCompleted: Bool
