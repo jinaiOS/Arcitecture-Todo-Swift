@@ -16,8 +16,8 @@ class TodoCompleteViewController: UIViewController {
     
     // Create left UIBarButtonItem.
     lazy var leftButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(leftButtonPressed(_:)))
-        
+        let button = UIBarButtonItem(image: UIImage(named: "Menu"), style: .plain, target: self, action: #selector(leftButtonPressed(_:)))
+        button.tintColor = .black
         return button
     }()
     
