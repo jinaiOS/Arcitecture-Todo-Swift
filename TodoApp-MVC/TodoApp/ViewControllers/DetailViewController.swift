@@ -13,8 +13,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var tfTitle: UITextField!
     /** @brief date text field */
     @IBOutlet weak var tfDate: UITextField!
-    /** @brief content text field */
-    @IBOutlet weak var tfContent: UITextView!
+    @IBOutlet weak var imgMain: UIImageView!
     
     // 넘겨받는 투두 데이터 리스트
     var dataList: Todo?
@@ -32,7 +31,10 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = self.rightButton
         tfTitle.text = dataList?.title
-        tfDate.text = dataList?.createDate.toString()        
+        tfDate.text = dataList?.createDate.toString()
+        let dataDecoded : Data = Data(base64Encoded: dataList?.image ?? "", options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        imgMain.image = decodedimage
         tfTitle.delegate = self
         tfDate.delegate = self
         setupDatePicker()
@@ -44,7 +46,6 @@ class DetailViewController: UIViewController {
     func textFieldEnabled(isEnabled: Bool) {
         tfTitle.isEnabled = isEnabled
         tfDate.isEnabled = isEnabled
-        tfContent.isEditable = isEnabled
     }
 
     @objc func buttonPressed(_ sender: UIBarButtonItem) {
@@ -52,7 +53,7 @@ class DetailViewController: UIViewController {
             textFieldEnabled(isEnabled: true)
             sender.title = "Done"
         } else {
-            CoreDataManager.sharedInstance.updateTodo(Todo(id: dataList?.id ?? UUID(), title: tfTitle.text ?? "", createDate: dataList?.createDate ?? Date(), modifyDate: Date()))
+//            CoreDataManager.sharedInstance.updateTodo(Todo(id: dataList?.id ?? UUID(), title: tfTitle.text ?? "", createDate: dataList?.createDate ?? Date(), modifyDate: Date()))
             textFieldEnabled(isEnabled: false)
             sender.title = "Edit"
         }

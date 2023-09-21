@@ -20,7 +20,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
     @IBOutlet weak var vBlankList: UIView!
     
     // 투두리스트 중 기간이 지나지 않은 리스트
-    var memoList = CoreDataManager.sharedInstance.getTodos().filter { $0.isCompleted == false && $0.isDelete == false }
+    var todoList = CoreDataManager.sharedInstance.getTodos().filter { $0.isCompleted == false && $0.isDelete == false }
     
     let userNotificationCenter = UNUserNotificationCenter.current()
     
@@ -34,7 +34,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        memoList = CoreDataManager.sharedInstance.getTodos().filter { $0.isCompleted == false && $0.isDelete == false }
+        todoList = CoreDataManager.sharedInstance.getTodos().filter { $0.isCompleted == false && $0.isDelete == false }
         tvMain.reloadData()
     }
     
@@ -102,7 +102,7 @@ class ViewController: UIViewController, ViewControllerDelegate {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memoList.count
+        return todoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,7 +111,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
                 
-        if memoList.count == 0 {
+        if todoList.count == 0 {
             // 투두리스트 개수가 0개일 때
             tvMain.isHidden = true
             vBlankList.isHidden = false
@@ -120,9 +120,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             vBlankList.isHidden = true
         }
         
-        cell.switchButton.isOn = memoList[indexPath.row].isCompleted
+        cell.switchButton.isOn = todoList[indexPath.row].isCompleted
         
-        cell.lblTitle.text = memoList[indexPath.row].title // 제목 설정
+        cell.lblTitle.text = todoList[indexPath.row].title // 제목 설정
         cell.index = indexPath.row
         cell.delegate = self
         
@@ -133,7 +133,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
         if let firstVC: DetailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
             // 뷰 컨트롤러를 구성 합니다.
-            firstVC.dataList = memoList[indexPath.row]
+            firstVC.dataList = todoList[indexPath.row]
             // 뷰 컨트롤러를 나타냅니다.
             self.navigationController?.pushViewController(firstVC, animated: true)
         }
@@ -147,8 +147,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     //Edit Mode의 +, - 버튼
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         print("delete")
-        CoreDataManager.sharedInstance.deleteTodo(memoList[indexPath.row])
-        memoList = CoreDataManager.sharedInstance.getTodos().filter { $0.isCompleted == false && $0.isDelete == false }
+        CoreDataManager.sharedInstance.deleteTodo(todoList[indexPath.row])
+        todoList = CoreDataManager.sharedInstance.getTodos().filter { $0.isCompleted == false && $0.isDelete == false }
         tableView.deleteRows(at: [indexPath], with: .none)
         tableView.reloadData()
     }
