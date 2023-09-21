@@ -45,7 +45,10 @@ class AddTodoViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @objc func buttonPressed(_ sender: Any) {
-        CoreDataManager.sharedInstance.insertTodo(Todo(id: UUID.init(), title: tfTitle.text ?? "", createDate: (tfDate.text?.toDate())!, modifyDate: (tfDate.text?.toDate())!))
+        if let data = imgAdd.image?.pngData() {
+            let dataStr = data.base64EncodedString(options: .lineLength64Characters)
+            CoreDataManager.sharedInstance.insertTodo(Todo(id: UUID.init(), title: tfTitle.text ?? "", image: dataStr, createDate: (tfDate.text?.toDate())!, modifyDate: (tfDate.text?.toDate())!))
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
